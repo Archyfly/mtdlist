@@ -1,0 +1,7 @@
+<h2>List of users</h2>
+<% @users.each do |user| %>
+  <p><%= user.first_name + ' ' + user.last_name%></p>
+  <p><%=  %></p>
+  <p><%= user.email %></p>
+  <p><%= user.created_at %></p>
+<% end %>
