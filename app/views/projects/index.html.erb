@@ -1,0 +1,30 @@
+<h1 class="mb-4">My projects - index</h1>
+
+  <% if current_user.projects.any? %>
+  <% current_user.projects.each do |project| %>
+    <article class="card mb-3">
+      <div class="card-body">
+      <h4><%= project.title %></h4>
+
+      <section class="card-text">
+        <time datetime="<%= project.formatted_created_at %>">
+          <small><%= project.formatted_created_at %></small>
+        </time>
+        <p class="my-2"><%= project.description %></p>
+
+      </section>
+       <%= link_to 'Show', user_project_path(project.user_id, project.id), class: 'btn btn-primary' %>
+       <%= link_to 'Edit', edit_user_project_path(project.user_id, project.id), class: 'btn btn-warning' %>
+
+       <%# button_to 'Destroy', user_project_path(project.user_id, project), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?'}, remote: true %>
+      </div>
+    </article>
+    <% end %>
+  <% else %>
+    <h2> You haven't projects now. </h2>
+    <%= link_to "Create new project", new_user_project_path, class: 'btn btn-primary' %>
+  </div>
+
+<% end %>
+<hr>
+<%= link_to "Create new project", new_user_project_path, class: 'btn btn-primary m-53' %>

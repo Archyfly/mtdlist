@@ -1,0 +1,18 @@
+<h1>My projects - Users show</h1>
+
+<% if @user.projects.any? %>
+  <% @user.projects.each do |project| %>
+    <article class="card mb-3">
+      <div class="card card-header">
+        <h4><%= project.title %></h4>
+      </div>
+      <div class="card card-body">
+        <%= project.description %>
+      </div>
+    </article>
+
+  <% end %>
+<% else %>
+  <h2> You haven't projects now. </h2>
+  <%= link_to "Create new project", new_user_project_path(@user), class: 'btn btn-warning' %>
+<% end %>

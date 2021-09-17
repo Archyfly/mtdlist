@@ -1,0 +1,23 @@
+<h1 class="mb-4">My projects - Project show</h1>
+
+<article class="card">
+      <div class="card-header">
+      <h4><%= @project.title %></h4>
+        <p> <%= @project.formatted_created_at %></p>
+        <p class="card card-header">project description:</p>
+      <section class="card card-body mb-4">
+
+        <p class="my-2">
+          <%= @project.description %>
+        </p>
+      </section>
+
+
+        <%= link_to 'Back to Projects', user_projects_path, class: 'btn btn-primary mb-3' %>
+        <%= button_to 'Destroy', user_project_path(@project.user_id, @project), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?'}, remote: true %>
+        <%# link_to 'Edit', user_edit_project_path(@project.user_id, @project), class: 'btn btn-secondary' %>
+        <%# link_to 'Destroy', user_project_path(@project.user_id, project), class: 'btn btn-danger',
+          data: {method: :delete, confirm: 'Are you sure?'} %>
+      </div>
+</article>
+
