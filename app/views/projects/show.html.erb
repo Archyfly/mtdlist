@@ -1,15 +1,30 @@
-<h1 class="mb-4">My projects - Project show</h1>
+<h3 class="mb-4" xmlns="http://www.w3.org/1999/html">My projects - Project show</h3>
 
 <article class="card">
   <div class="card-header">
-    <h4><%= @project.title %></h4>
-      <p> <%= @project.formatted_created_at %></p>
-      <p class="card card-header">project description:</p>
-    <section class="card card-body mb-4">
-      <p class="my-2">
-        <%= @project.description %>
-      </p>
-    </section>
+    <h5><%= @project.title %></h5>
+    <p class="card card-header" ><%= @project.description %></p>
+    <p class="mb-2" style="font-size: smaller">Created at: <%= @project.formatted_created_at %></p>
+  </div>
+  <h5 class="mb-3 mt-3" style="text-align: center"> Tasks of project </h5>
+    <% @project.tasks.each do |task| %>
+      <table class="table table-bordered table-success">
+        <thead>
+          <th class="table table-success" style="width: 10%">Task name</th>
+          <th style="width: 60%">Task description</th>
+          <th class="table table-danger" style="width: 10%">Status</th>
+          <th class="table table-danger" style="width: 10%">Deadline</th>
+          <th class="table table-danger" style="width: 10%">Priority</th>
+        </thead>
+        <tbody>
+        <td class="card-header" id="my-task-name"><%= task.task_name %></td>
+          <td class="card-body"><%= task.body %></td>
+          <td class="card-group"><%= task.status %></td>
+          <td class="card-text" <%= task.deadline %></td>
+          <td class="card-text" <%= task.priority %></td>
+        </tbody>
+      </table>
+    <% end %>
   </div>
   <%= link_to 'Back to Projects', user_projects_path, class: 'btn btn-primary mb-3' %>
   <%= button_to 'Destroy this project', user_project_path(@project.user_id, @project), class: 'btn btn-danger',
