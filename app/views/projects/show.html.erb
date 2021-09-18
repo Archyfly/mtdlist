@@ -1,9 +1,10 @@
 <h3 class="mb-4" xmlns="http://www.w3.org/1999/html">My projects - Project show</h3>
 
 <article class="card">
+  <h5><%= @project.title %></h5>
+  <button class="hide-project-desc">hide</button>
   <div class="card-header">
-    <h5><%= @project.title %></h5>
-    <p class="card card-header" ><%= @project.description %></p>
+    <p class="card card-header"><%= @project.description %></p>
     <p class="mb-2" style="font-size: smaller">Created at: <%= @project.formatted_created_at %></p>
   </div>
 
@@ -16,7 +17,7 @@
     </thead>
     <td><% @project.tasks.created.each do |task| %>
      <table class="table table-bordered table-danger" style="width: 100%">
-        <td><%= task.body %></td>
+        <td id="tb-created"><%= task.body %></td>
       </table>
 
     <% end %>
@@ -44,4 +45,11 @@
   </div></div>
   </div>
 </article>
+<script>
+  let themeButton = document.querySelector('.hide-project-desc');
+  let projectDesc = document.querySelector('.card-header');
 
+  themeButton.onclick = function toggle() {
+    projectDesc.style.display = (projectDesc.style.display == 'none') ? '' : 'none'
+  };
+</script>
