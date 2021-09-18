@@ -3,6 +3,11 @@ class Task < ApplicationRecord
 
   belongs_to :project
 
+  scope :created, -> { where(status: 0) }
+  scope :in_progress, -> { where(status: 1) }
+  scope :done, -> { where(status: 2) }
+
+
   def dead?
     Time.now > deadline
   end

@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :find_project
 
   def index
-    @tasks = @project.tasks
+    @tasks = @project.tasks.second
   end
 
   def show

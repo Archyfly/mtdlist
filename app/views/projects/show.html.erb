@@ -6,32 +6,42 @@
     <p class="card card-header" ><%= @project.description %></p>
     <p class="mb-2" style="font-size: smaller">Created at: <%= @project.formatted_created_at %></p>
   </div>
-  <h5 class="mb-3 mt-3" style="text-align: center"> Tasks of project </h5>
-    <% @project.tasks.each do |task| %>
-      <table class="table table-bordered table-success">
-        <thead>
-          <th class="table table-success" style="width: 10%">Task name</th>
-          <th style="width: 60%">Task description</th>
-          <th class="table table-danger" style="width: 10%">Status</th>
-          <th class="table table-danger" style="width: 10%">Deadline</th>
-          <th class="table table-danger" style="width: 10%">Priority</th>
-        </thead>
-        <tbody>
-        <td class="card-header" id="my-task-name"><%= task.task_name %></td>
-          <td class="card-body"><%= task.body %></td>
-          <td class="card-group"><%= task.status %></td>
-          <td class="card-text" <%= task.deadline %></td>
-          <td class="card-text" <%= task.priority %></td>
-        </tbody>
+
+  <table class="table caption-top">
+    <caption>Tasks in this project</caption>
+    <thead>
+    <th class="table-condensed" style="text-align: center">Created tasks:</th>
+    <th class="table-condensed" style="text-align: center">In progress</th>
+    <th class="table-condensed" style="text-align: center">Done!</th>
+    </thead>
+    <td><% @project.tasks.created.each do |task| %>
+     <table class="table table-bordered table-danger" style="width: 100%">
+        <td><%= task.body %></td>
       </table>
+
     <% end %>
-  </div>
+  </td>
+  <td>
+    <% @project.tasks.in_progress.each do |task| %>
+      <table class="table table-bordered table-warning" style="width: 100%">
+        <td><%= task.body %></td>
+      </table>
+  <% end %>
+  </td><td>
+    <% @project.tasks.done.each do |task| %>
+        <table class="table table-bordered table-success" style="width: 100%">
+          <td><%= task.body %></td>
+        </table>
+    <% end %>
+  </table>
+
   <%= link_to 'Back to Projects', user_projects_path, class: 'btn btn-primary mb-3' %>
   <%= button_to 'Destroy this project', user_project_path(@project.user_id, @project), class: 'btn btn-danger',
                 method: :delete, data: { confirm: 'Are you sure? All task will be deleted!'}, remote: true %>
         <%# link_to 'Edit', user_edit_project_path(@project.user_id, @project), class: 'btn btn-secondary' %>
         <%# link_to 'Destroy', user_project_path(@project.user_id, project), class: 'btn btn-danger',
           data: {method: :delete, confirm: 'Are you sure?'} %>
+  </div></div>
   </div>
 </article>
 
