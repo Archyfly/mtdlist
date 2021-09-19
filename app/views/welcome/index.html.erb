@@ -1,10 +1,7 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
 <!doctype html>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Datepicker - Default functionality</title>
+  <title> My todo list app </title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -12,13 +9,31 @@
 
 </head>
 <body>
+  <div class="container" style="align-content: center">
+    <h2 style="text-align: center">To-Do List App</h2>
+    <h4 class="want-task-flow mb-4" style="opacity: 70%; font-style: italic;">
+      <li>If you want to manage your tasks and projects more effectively - this app helps in controlling your task-flow.</li>
+      <li>You can create your own projects and tasks after <%= link_to "Sign Up", new_user_registration_path %></li>
+    </h4>
+    <figure style="align-items: center">
+      <img src="after_sign.png" height="auto" width="960px" alt="After sign up.">
+      <figcaption>After sign up you can create your own projects and tasks</figcaption>
+    </figure>
+    <h4 class="mb-4" style="opacity: 70%; font-style: italic;">
+      <li>In project you can create tasks, for example task list view:</li>
+    </h4>
+    <h5><li>task list grouped in three columns, as 'created', 'in_progress' and 'done' statuses</li></h5>
+    <h5><li>you can set task priority by number, and tasks views by order its priority</li></h5>
+      <figure style="align-items: center">
+      <img src="show_project.png" height="auto" width="960px" alt="Show project.">
+      <figcaption>After sign up you can create your own projects and tasks</figcaption>
+    </figure>
 
-<p>Date: <input type="text" id="datepicker"></p>
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-</script>
+
+
+
+  </div>
+
 
 </body>
 </html>
