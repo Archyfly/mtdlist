@@ -24,6 +24,7 @@ class TasksController < ApplicationController
 
   def edit
     @user = current_user
+    @task = @project.tasks.find(params[:id])
   end
 
   def update

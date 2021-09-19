@@ -35,6 +35,7 @@
         <table class="table table-bordered table-success" style="width: 100%">
           <td><%= task.body %></td>
           <%= render 'projects/form_task_inline', task: task %>
+          <%= link_to 'Edit', edit_user_project_task_path(current_user, @project, task), class: 'btn btn-warning mb-3 small' %>
         </table>
     <% end %>
   </table>
