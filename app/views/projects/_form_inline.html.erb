@@ -1,0 +1,12 @@
+<%= form_with model: [current_user, project],
+              url: update_inline_user_project_path(current_user, project),
+              local: true,
+              class: 'form-inline',
+              html: {style: 'display: block'},
+              data: { project_id: project.id } do |form| %>
+  <%# render 'shared/errors', resource: test %>
+  <%= form.text_field :title, class: 'form-control mr-2' %>
+  <%= form.text_area :description, class: 'form-control mr-2' %>
+
+  <%= form.submit 'OK', class: 'btn btn-primary' %>
+<% end %>

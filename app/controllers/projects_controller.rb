@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
+  before_action :set_projects, only: %i[index update_inline]
   before_action :authenticate_user!
 
   def index
-    @projects = current_user.projects
   end
 
   def show
@@ -37,6 +37,15 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update_inline
+    @project = current_user.projects.find(params[:id])
+    if @project.update(project_params)
+      redirect_to user_projects_path, flash: { success: 'project was updated! '}
+    else
+      render :index
+    end
+  end
+
   def destroy
     @project = current_user.projects.find(params[:id])
     @project.destroy
@@ -44,6 +53,10 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def set_projects
+    @projects = current_user.projects
+  end
 
   def project_params
     params.require(:project).permit(:title, :description)

@@ -1,8 +1,8 @@
 <h3 class="mb-4" xmlns="http://www.w3.org/1999/html">My projects - Project show</h3>
 
 <article class="card">
-  <h5><%= @project.title %></h5>
-  <button class="hide-project-desc">hide</button>
+  <h5><%= @project.title %>
+  <button class="hide-project-desc btn btn-success btn-sm">show/hide description</button></h5>
   <div class="card-header">
     <p class="card card-header"><%= @project.description %></p>
     <p class="mb-2" style="font-size: smaller">Created at: <%= @project.formatted_created_at %></p>
@@ -46,10 +46,10 @@
   </div>
 </article>
 <script>
-  let themeButton = document.querySelector('.hide-project-desc');
+  let projButton = document.querySelector('.hide-project-desc');
   let projectDesc = document.querySelector('.card-header');
 
-  themeButton.onclick = function toggle() {
+  projButton.onclick = function toggle() {
     projectDesc.style.display = (projectDesc.style.display == 'none') ? '' : 'none'
   };
 </script>

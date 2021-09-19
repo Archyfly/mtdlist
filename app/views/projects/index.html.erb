@@ -4,7 +4,7 @@
   <% current_user.projects.each do |project| %>
     <article class="card mb-3">
       <div class="card-body">
-      <h4><%= project.title %></h4>
+      <h4><%= project.title %><%= render 'form_inline', project: project %></h4>
 
       <section class="card-text">
         <time datetime="<%= project.formatted_created_at %>">

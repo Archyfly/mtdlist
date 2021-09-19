@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :projects do
+      patch :update_inline, on: :member
       resources :tasks
     end
   end
