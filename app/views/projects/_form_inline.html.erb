@@ -4,7 +4,7 @@
               class: 'form-inline',
               html: {style: 'display: block'},
               data: { project_id: project.id } do |form| %>
-  <%# render 'shared/errors', resource: test %>
+  <%= render 'shared/errors', resource: project %>
   <%= form.text_field :title, class: 'form-control mr-2' %>
   <%= form.text_area :description, class: 'form-control mr-2' %>
 

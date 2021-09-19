@@ -1,0 +1,10 @@
+<% if resource.present? && resource.errors.any? %>
+  <div>
+    <h2><%= Errors count: resource.errors.count %></h2>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= flash[:alert] = "#{message}" %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

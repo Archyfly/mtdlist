@@ -18,6 +18,7 @@
     <td><% @project.tasks.created.each do |task| %>
      <table class="table table-bordered table-danger" style="width: 100%">
         <td id="tb-created"><%= task.body %></td>
+        <%= render 'projects/form_task_inline', task: task %>
       </table>
 
     <% end %>
@@ -26,16 +27,18 @@
     <% @project.tasks.in_progress.each do |task| %>
       <table class="table table-bordered table-warning" style="width: 100%">
         <td><%= task.body %></td>
+        <%= render 'projects/form_task_inline', task: task %>
       </table>
   <% end %>
   </td><td>
     <% @project.tasks.done.each do |task| %>
         <table class="table table-bordered table-success" style="width: 100%">
           <td><%= task.body %></td>
+          <%= render 'projects/form_task_inline', task: task %>
         </table>
     <% end %>
   </table>
-
+  <%= link_to 'Create new task', new_user_project_task_path(current_user, @project), class: 'btn btn-warning mb-3' %>
   <%= link_to 'Back to Projects', user_projects_path, class: 'btn btn-primary mb-3' %>
   <%= button_to 'Destroy this project', user_project_path(@project.user_id, @project), class: 'btn btn-danger',
                 method: :delete, data: { confirm: 'Are you sure? All task will be deleted!'}, remote: true %>

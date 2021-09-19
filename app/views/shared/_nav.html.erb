@@ -1,9 +1,12 @@
 <nav class="navbar navbar-light" style="background-color: #999999;">
   <div class="container">
     <div class="navbar-header">
-      <%= link_to 'ToDo list', root_path, class: 'navbar-brand' %>
-      <%= link_to 'All users', users_path, class: 'navbar-brand' %>
-
+      <% if user_signed_in? && current_user.present? %>
+          <%= link_to 'My ToDo list', user_projects_path(current_user), class: 'navbar-brand' %>
+          <%= link_to 'Create new project', new_user_project_path(current_user), class: 'navbar-brand' %>
+      <% else %>
+        <%= link_to 'About', root_path, class: 'navbar-brand' %>
+      <% end %>
     </div>
     <div id="navbar">
       <ul class="navbar-btn navbar-link">

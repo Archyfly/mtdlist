@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :projects do
       patch :update_inline, on: :member
-      resources :tasks
+      resources :tasks do
+        patch :update_task_inline, on: :member
+      end
     end
   end
 

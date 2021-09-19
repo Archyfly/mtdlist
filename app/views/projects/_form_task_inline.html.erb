@@ -1,0 +1,17 @@
+<%= form_with model: [current_user, @project, task],
+              url: update_task_inline_user_project_task_path(current_user, @project, task),
+              local: true,
+              class: 'form-inline',
+              html: {style: 'display: block'},
+              data: { task_id: task.id } do |form| %>
+  <%# render 'shared/errors', resource: task %>
+  <div class="container" style="display: flex">
+    <%= form.label :status, class: 'form-label', style: 'mr-3' %>:
+    <%= form.text_field :status, class: 'form-control' %>
+    <%= form.label :priority, class: 'form-label mr-3' %>:
+    <%= form.text_field :priority, class: 'form-control' %>
+
+    <%# form.text_area :description, class: 'form-control mr-2' %>
+
+  <%= form.submit 'OK', class: 'btn btn-secondary' %></div>
+<% end %>

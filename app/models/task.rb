@@ -3,6 +3,7 @@ class Task < ApplicationRecord
 
   belongs_to :project
 
+  default_scope { order(priority: :desc) }
   scope :created, -> { where(status: 0) }
   scope :in_progress, -> { where(status: 1) }
   scope :done, -> { where(status: 2) }
