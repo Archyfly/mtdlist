@@ -7,7 +7,7 @@
   <%# render 'shared/errors', resource: task %>
   <div class="container" style="display: flex">
     <%= form.label :status, class: 'form-label', style: 'mr-3' %>:
-    <%= form.select :status, Task.statuses.keys, class: 'form-control' %>
+    <%= form.select :status, options_for_select(Task.statuses.keys), class: 'form-control' %>
     <%= form.label :priority, class: 'form-label mr-3' %>:
     <%= form.text_field :priority, class: 'form-control' %>
 
