@@ -8,6 +8,7 @@ class Task < ApplicationRecord
   scope :in_progress, -> { where(status: 1) }
   scope :done, -> { where(status: 2) }
 
+  validates :body, :task_name, presence: true
 
   def dead?
     Time.now > deadline

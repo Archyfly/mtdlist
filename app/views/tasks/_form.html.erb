@@ -1,5 +1,7 @@
 <%= form_with model: [current_user, @project, @task] do |f| %>
-  <div class="mb-3 row">
+  <%= render 'shared/errors', resource: @task %>
+  <h3>Create new task:</h3>
+  <div class="mb-3 mt-3 row">
     <div class="col-sm-2 col-form-label">
       <%= f.label :task_name %>
     </div>

@@ -5,13 +5,15 @@
               html: {style: 'display: block'},
               data: { task_id: task.id } do |form| %>
   <%# render 'shared/errors', resource: task %>
-  <div class="container" style="display: flex">
-    <%= form.label :status, class: 'form-label', style: 'mr-3' %>:
-    <%= form.text_field :status, class: 'form-control' %>
-    <%= form.label :priority, class: 'form-label mr-3' %>:
-    <%= form.text_field :priority, class: 'form-control' %>
+  <div class="container mb-2" style="display: flex">
+    <div class="flex-column mb-3 text-center"><%= form.label :status, class: 'form-label', style: 'mr-3' %>:
+    <%= form.text_field :status, :size=>'11', class: 'form-control' %></div>
+    <div class="flex-column mb-3 text-center field_with_errors"><%= form.label :priority, class: 'form-label mr-3' %>:
+      <%= form.text_field :priority, class: 'form-control' %></div>
+    <div class="flex-column mb-3 text-center"><%= form.label :deadline, class: 'form-label mr-3' %>:
+    <%= form.date_field :deadline, class: 'form-control' %></div>
 
     <%# form.text_area :description, class: 'form-control mr-2' %>
 
-  <%= form.submit 'OK', class: 'btn btn-secondary' %></div>
+  <%= form.submit 'OK', class: 'btn btn-secondary mt-3' %></div>
 <% end %>

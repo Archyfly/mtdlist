@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to user_project_path(current_user, @project), flash: { success: 'Task was created! '}
     else
-      render :new, flash: { alert: 'Some errors occured'}
+      render :new#, flash: { alert: 'Some errors occured'}
     end
   end
 
@@ -44,6 +44,13 @@ class TasksController < ApplicationController
     else
       render :index
     end
+  end
+
+  def destroy
+    @project = current_user.projects.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
+    @task.destroy
+    redirect_to user_project_path(current_user, @project), flash: { success: 'task was deleted! '}
   end
 
   private

@@ -8,7 +8,7 @@
     <p class="mb-2" style="font-size: smaller">Created at: <%= @project.formatted_created_at %></p>
   </div>
 
-  <table class="table caption-top">
+  <table class="table caption-top" style="font-size: 0.9rem">
     <caption>Tasks in this project</caption>
     <thead>
     <th class="table-condensed" style="text-align: center">Created tasks:</th>
@@ -16,29 +16,38 @@
     <th class="table-condensed" style="text-align: center">Done!</th>
     </thead>
     <td><% @project.tasks.created.each do |task| %>
-     <table class="table table-bordered table-danger" style="width: 100%">
-        <td id="tb-created"><%= task.body %></td>
-        <%= render 'projects/form_task_inline', task: task %>
-       <%= link_to 'Edit', edit_user_project_task_path(current_user, @project, task), class: 'btn btn-danger mb-3 small' %>
-      </table>
+        <div class="card border-1 border-dark mb-3">
+          <table class="table table-bordered table-danger" style="width: 100%">
+            <td id="tb-created"><%= task.body %></td>
+            <%= render 'projects/form_task_inline', task: task %>
+            <%= link_to 'Edit', edit_user_project_task_path(current_user, @project, task), class: 'btn btn-danger mb-3 small' %>
+          </table>
+        </div>
 
     <% end %>
   </td>
   <td>
     <% @project.tasks.in_progress.each do |task| %>
-      <table class="table table-bordered table-warning" style="width: 100%">
-        <td><%= task.body %></td>
-        <%= render 'projects/form_task_inline', task: task %>
-        <%= link_to 'Edit', edit_user_project_task_path(current_user, @project, task), class: 'btn btn-warning mb-3 small' %>
-      </table>
+      <div class="card border-1 border-dark mb-3">
+        <table class="table table-bordered table-warning" style="width: 100%">
+          <td><%= task.body %></td>
+          <%= render 'projects/form_task_inline', task: task %>
+          <%= link_to 'Edit', edit_user_project_task_path(current_user, @project, task), class: 'btn btn-warning mb-3 small' %>
+        </table>
+      </div>
   <% end %>
   </td><td>
     <% @project.tasks.done.each do |task| %>
+      <div class="card border-1 border-dark mb-3">
         <table class="table table-bordered table-success" style="width: 100%">
           <td><%= task.body %></td>
           <%= render 'projects/form_task_inline', task: task %>
           <%= link_to 'Edit', edit_user_project_task_path(current_user, @project, task), class: 'btn btn-success mb-3 small' %>
+          <%= link_to 'Delete', user_project_task_path(current_user, @project, task), class: 'btn btn-danger mb-3 small',
+                      method: :delete, data: { confirm: 'Are you sure? Task will be deleted!'} %>
+
         </table>
+      </div>
     <% end %>
   </table>
   <%= link_to 'Create new task', new_user_project_task_path(current_user, @project), class: 'btn btn-warning mb-3' %>
