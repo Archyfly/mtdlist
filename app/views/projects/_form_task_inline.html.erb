@@ -5,6 +5,7 @@
               html: {style: 'display: block'},
               data: { task_id: task.id } do |form| %>
   <%# render 'shared/errors', resource: task %>
+
   <div class="container mb-2" style="display: flex">
     <div class="flex-column mb-3 text-center"><%= form.label :status, class: 'form-label', style: 'mr-3' %>:
     <%= form.text_field :status, :size=>'11', class: 'form-control' %></div>

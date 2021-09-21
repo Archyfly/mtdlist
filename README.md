@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h2>My To Do List</h2>
 
-Things you may want to cover:
+- Deployed on heroku: https://mtdlist.herokuapp.com
 
-* Ruby version
+- After sign_up you give your own workplace for creating projects, tasks in projects.
+- Tasks have priority, status. Deadline for tasks in development.
 
-* System dependencies
 
-* Configuration
+<h5>Ruby version: 2.7.2</h5>
+<h5>Rails: 6.1.4</h5>
+<h5> gem 'devise'</h5>
+<h5>gem 'bootstrap-sass'</h5>
+<h5>gem 'devise-bootstrap-views', '~> 1.0'</h5>
+<h5>gem 'jquery-rails'</h5>
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
